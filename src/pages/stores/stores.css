@@ -1,0 +1,67 @@
+ul.stores-list {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0; /* Remove left padding */
+  margin: 0 auto; /* Center align the list */
+  font-size: 18px;
+
+  /* Use columns for layout */
+  column-count: 3; /* Change this to 2 or 3 for desired column count */
+  column-gap: 20px; /* Space between columns */
+  max-width: 100%; /* Ensure it uses the available screen width */
+}
+
+ul.stores-list li {
+  margin-bottom: 15px; /* Space between items */
+  break-inside: avoid; /* Prevent items from breaking between columns */
+}
+
+.stores {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  width: 100%; /* Full width to ensure it adapts to the screen */
+  margin-top: 20px; /* Space above the section */
+}
+
+.stores h1 {
+  margin-top: 0; /* Move the title to the top of the page */
+  text-align: center; /* Center-align the title */
+  margin-bottom: 100px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add space below the buttons */
+}
+
+.select-all-button,
+.unselect-all-button,
+.save-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select-all-button:hover,
+.unselect-all-button:hover,
+.save-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+@media (max-width: 768px) {
+  ul.stores-list {
+    column-count: 2; /* Reduce to 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  ul.stores-list {
+    column-count: 1; /* Single column for very small screens */
+  }
+}

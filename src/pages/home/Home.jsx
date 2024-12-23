@@ -1,6 +1,7 @@
 import React from "react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Home = () => {
           <li>Real-time notifications for order updates</li>
         </ul>
       </section>
+      <Footer />
     </div>
   );
 };

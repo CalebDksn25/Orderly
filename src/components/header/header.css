@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   background-color: #131313;
-  color: white;
+  color: #58bc82;
   display: flex;
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space between title and icon */
@@ -27,13 +27,13 @@
 
 .user-icon i {
   font-size: 40px; /* Increase the size of the icon */
-  color: white;
+  color: #58bc82;
 }
 
 .user-icon img {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  color: white;
-  background-color: white;
+  color: #58bc82;
+  background-color: #58bc82;
 }
