@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./stores.css";
 import DISTRIBUTORS from "../../utils/Data";
-import { saveSites } from "../../utils/saveSites";
+import { saveSites, fetchSites } from "../../utils/saveSites";
 
 const storesData = DISTRIBUTORS.map((name, index) => ({ id: index + 1, name }));
 
 const Stores = () => {
   const [checkedStores, setCheckedStores] = useState([]);
+
+  useEffect(() => {
+    const loadSavedSites = async () => {
+      try {
+        const savedSites = await fetchSites();
+        const savedStoreIds = storesData
+          .filter((store) => savedSites.includes(store.name))
+          .map((store) => store.id);
+        setCheckedStores(savedStoreIds);
+      } catch (error) {
+        console.error("Error fetching saved sites:", error.message);
+      }
+    };
+
+    loadSavedSites();
+  }, []);
 
   const handleToggle = (storeId) => {
     setCheckedStores((prevCheckedStores) =>
