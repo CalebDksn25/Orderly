@@ -1,0 +1,23 @@
+.side-navbar {
+  width: 20%;
+  height: calc(100% - 60px); /* Adjust height to account for the header */
+  position: fixed;
+  top: 60px; /* Position below the header */
+  left: 0;
+  background-color: #121212;
+  overflow-x: hidden;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.side-navbar a {
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+
+.side-navbar a:hover {
+  background-color: #575757;
+}

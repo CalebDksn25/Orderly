@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #131313;
+  color: white;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between title and icon */
+  padding-left: none; /* Adjust padding to bring the icon slightly to the left */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.header-title {
+  font-size: 24px;
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the icon horizontally if needed */
+  margin-left: auto; /* Push icon to the right */
+}
+
+.user-icon i {
+  font-size: 40px; /* Increase the size of the icon */
+  color: white;
+}
+
+.user-icon img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: white;
+  background-color: white;
+}

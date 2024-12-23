@@ -1,0 +1,87 @@
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #131313;
+  color: #f5f5f5;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero .login-btn {
+  background-color: #00e5ff;
+  color: #131313;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hero .login-btn:hover {
+  background-color: #76ff03;
+}
+
+/* About Section */
+.about,
+.features {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  color: #333;
+  text-align: center;
+}
+
+.about h2,
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about p,
+.features li {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+/* Features List */
+.features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features li {
+  margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .about h2,
+  .features h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.about {
+  background-color: #131313;
+}
+
+.features {
+  background-color: #131313;
+  color: #f5f5f5;
+}
