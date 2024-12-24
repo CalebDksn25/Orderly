@@ -9,8 +9,17 @@ export const googleLogin = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    console.log("Google Account Linked:", user.email);
-    return user.email; // Returns the logged-in email
+
+    // Log all available user information for debugging
+    console.log("Google Login Successful: ", user);
+
+    // Return the full user object for further use
+    return {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL, // Optional: Add if you need profile picture
+    };
   } catch (error) {
     console.error("Error with Google Login:", error.message);
     throw error;

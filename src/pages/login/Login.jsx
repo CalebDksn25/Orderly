@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { googleLogin } from "../../utils/googleLogin";
-import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore"; // Firestore functions
 import "./login.css";
 import Footer from "../../components/footer/Footer";
 
@@ -19,13 +19,24 @@ const Login = () => {
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
-        // If user data exists, navigate to the dashboard
+        console.log("User data exists:", userDoc.data());
+        // Navigate to the dashboard if user data exists
         navigate("/dashboard");
       } else {
-        // If user data does not exist, navigate to the user info form
+        console.log("User data does not exist. Redirecting to user info form.");
+
+        // Create an initial document for the user in Firestore (optional)
+        await setDoc(userDocRef, {
+          email: user.email,
+          displayName: user.displayName || "",
+          createdAt: new Date(),
+        });
+
+        // Navigate to the user info form if user data does not exist
         navigate("/user-info");
       }
     } catch (error) {
+      console.error("Login failed:", error.message);
       alert("Login failed: " + error.message);
     }
   };
