@@ -1,6 +1,7 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need from the Firebase SDKs
 import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -13,9 +14,10 @@ const firebaseConfig = {
   measurementId: "G-WBPSRD93EQ",
 };
 
-// Initialize Firebase
+// Initialize Firebase only if no apps are initialized
 if (!getApps().length) {
-  initializeApp(firebaseConfig); // Initialize Firebase only if no apps are initialized
+  initializeApp(firebaseConfig);
 }
 
-export default firebaseConfig;
+export const db = getFirestore(); // Firestore instance for database operations
+export const auth = getAuth(); // Authentication instance for managing user login/logout
