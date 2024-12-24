@@ -48,9 +48,6 @@ const Accounts = () => {
   return (
     <div className="accounts-container">
       <h1>Manage Linked Accounts</h1>
-      <button onClick={handleAddEmail} className="add-account-button">
-        Add Account
-      </button>
       <table className="accounts-table">
         <thead>
           <tr>

@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { login } from "../../auth/firebaseAuth";
+import { googleLogin } from "../../utils/googleLogin";
 import "./login.css";
 import Footer from "../../components/footer/Footer";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleGoogleLogin = async () => {
     try {
-      await login(email, password);
+      await googleLogin();
       alert("Login successful!");
       navigate("/dashboard");
     } catch (error) {
@@ -23,41 +19,15 @@ const Login = () => {
 
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <span className="input-span">
-          <label htmlFor="email" className="label">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </span>
-        <span className="input-span">
-          <label htmlFor="password" className="label">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </span>
+      <div className="form">
+        <h2>Log In</h2>
+        <button onClick={handleGoogleLogin} className="google-login-button">
+          Log In with Google
+        </button>
         <span className="span">
-          <a href="/forgot-password">Forgot password?</a>
+          Don't have an account? <a href="/signup">Sign up</a>
         </span>
-        <input className="submit" type="submit" value="Log in" />
-        <span className="span">
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </span>
-      </form>
+      </div>
       <Footer />
     </div>
   );

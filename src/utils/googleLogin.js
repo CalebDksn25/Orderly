@@ -1,6 +1,7 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import app from "../auth/firebaseConfig"; // Ensure Firebase app is initialized
 
-const auth = getAuth();
+const auth = getAuth(app);
 
 export const googleLogin = async () => {
   const provider = new GoogleAuthProvider();

@@ -1,80 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { signup } from "../../auth/firebaseAuth";
+import { googleLogin } from "../../utils/googleLogin";
 import "./signup.css";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setPasswordError("Passwords do not match");
-      return;
-    }
-    setPasswordError("");
+  const handleGoogleLogin = async () => {
     try {
-      await signup(email, password);
+      await googleLogin();
       alert("Signup successful!");
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       alert("Signup failed: " + error.message);
     }
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <span className="input-span">
-        <label htmlFor="email" className="label">
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </span>
-      <span className="input-span">
-        <label htmlFor="password" className="label">
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </span>
-      <span className="input-span">
-        <label htmlFor="confirmPassword" className="label">
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          name="confirmPassword"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-          className={passwordError ? "error" : ""}
-        />
-        {passwordError && <p className="error-text">{passwordError}</p>}
-      </span>
-      <input className="submit" type="submit" value="Sign up" />
+    <div className="form">
+      <h2>Sign Up</h2>
+      <button onClick={handleGoogleLogin} className="google-login-button">
+        Sign Up with Google
+      </button>
       <span className="span">
-        Already have an account? <Link to="/login">Log in</Link>
+        Already have an account? <a href="/login">Log in</a>
       </span>
-    </form>
+    </div>
   );
 };
 
