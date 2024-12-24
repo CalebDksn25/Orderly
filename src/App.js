@@ -6,6 +6,7 @@ import Signup from "./pages/signup/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
 import User from "./pages/user/User"; // Import the User component
 import "./firebase/firebaseConfig"; // Ensure Firebase is initialized
+import Spreadsheet from "./pages/spreadsheeet/Spreadsheet";
 
 function App() {
   return (
