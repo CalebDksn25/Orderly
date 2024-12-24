@@ -5,7 +5,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
 import User from "./pages/user/User";
-import UserInfo from "./pages/userInfo/UserInfo"; // Import the new UserInfo component
+import UserInfo from "./pages/userInfo/userInfo"; // Import the new UserInfo component
 import "./firebase/firebaseConfig"; // Ensure Firebase is initialized
 
 function App() {
