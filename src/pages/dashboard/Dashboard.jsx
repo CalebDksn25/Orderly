@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Accounts from "../accounts/Accounts";
 import Stores from "../stores/Stores";
+import Spreadsheet from "../spreadsheet/Spreadsheet";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -14,6 +15,8 @@ const Dashboard = () => {
         return <Accounts />;
       case "stores":
         return <Stores />;
+      case "spreadsheet":
+        return <Spreadsheet />;
       default:
         return <h1>Dashboard</h1>;
     }
