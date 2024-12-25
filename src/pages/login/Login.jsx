@@ -14,25 +14,20 @@ const Login = () => {
       const user = await googleLogin(); // Log in the user
       alert("Login successful!");
 
-      // Check if the user's additional info exists in Firestore
+      // Check Firestore directly here
       const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
-        console.log("User data exists:", userDoc.data());
-        // Navigate to the dashboard if user data exists
+        console.log("User exists, navigating to dashboard...");
         navigate("/dashboard");
       } else {
-        console.log("User data does not exist. Redirecting to user info form.");
-
-        // Create an initial document for the user in Firestore (optional)
+        console.log("New user detected, redirecting to user info...");
         await setDoc(userDocRef, {
           email: user.email,
           displayName: user.displayName || "",
           createdAt: new Date(),
         });
-
-        // Navigate to the user info form if user data does not exist
         navigate("/user-info");
       }
     } catch (error) {

@@ -7,7 +7,7 @@ import "./userInfo.css";
 const UserInfo = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [purpose, setPurpose] = useState("");
+  const [purpose, setPurpose] = useState(""); // Added purpose state
   const navigate = useNavigate();
 
   const auth = getAuth();
@@ -20,8 +20,13 @@ const UserInfo = () => {
         const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
-          // Redirect to dashboard if user data already exists
-          navigate("/dashboard");
+          const userData = userDoc.data();
+          console.log("Existing User Data:", userData);
+
+          // If the user has already filled out their data, redirect to dashboard
+          if (userData.firstName && userData.lastName && userData.purpose) {
+            navigate("/dashboard");
+          }
         }
       }
     };
@@ -41,7 +46,9 @@ const UserInfo = () => {
         lastName,
         purpose,
         email: user.email,
-      });
+      }, { merge: true }); // Merge ensures it won't overwrite existing data
+
+      console.log("User Data Saved:", { firstName, lastName, purpose });
 
       // Redirect to dashboard after saving data
       navigate("/dashboard");

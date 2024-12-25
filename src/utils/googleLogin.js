@@ -10,15 +10,15 @@ export const googleLogin = async () => {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    // Log all available user information for debugging
+    // Log user information
     console.log("Google Login Successful: ", user);
 
-    // Return the full user object for further use
+    // Return user object for further use
     return {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL, // Optional: Add if you need profile picture
+      photoURL: user.photoURL,
     };
   } catch (error) {
     console.error("Error with Google Login:", error.message);
