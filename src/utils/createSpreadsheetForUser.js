@@ -21,6 +21,7 @@ export const createSpreadsheetForUser = async (token) => {
     return newSpreadsheetId;
   } catch (error) {
     console.error("Error creating spreadsheet:", error.message);
+    console.error("Token used:", token); // Log the token for debugging
     throw error;
   }
 };

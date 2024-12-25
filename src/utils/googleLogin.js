@@ -1,7 +1,5 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import app from "../auth/firebaseConfig"; // Ensure Firebase app is initialized
-
-const auth = getAuth(app);
+import { auth } from "../firebase/firebaseConfig"; // Correct import
 
 export const googleLogin = async () => {
   const provider = new GoogleAuthProvider();
@@ -13,16 +11,10 @@ export const googleLogin = async () => {
     // Sign in with Google and get the user details
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-
-    // Get the OAuth2 access token
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-
+    const token = await user.getIdToken();
     console.log("Google Account Linked:", user.email);
-    console.log("Access Token:", token);
-
-    // Return both email and access token
-    return { email: user.email, token };
+    console.log("Token:", token); // Log the token for debugging
+    return { email: user.email, token }; // Returns the logged-in email and token
   } catch (error) {
     console.error("Error with Google Login:", error.message);
     throw error;
