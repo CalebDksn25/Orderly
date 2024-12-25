@@ -17,7 +17,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/user" element={<User />} />
-        <Route path="/user-info" element={<UserInfo />} /> {/* New route for user info */}
+        <Route path="/user-info" element={<UserInfo />} />{" "}
+        {/* New route for user info */}
       </Routes>
     </Router>
   );
