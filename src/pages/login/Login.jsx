@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { googleLogin } from "../../utils/googleLogin";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore"; // Firestore functions
+import { db } from "../../firebase/config"; // Update this line
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import "./login.css";
 import Footer from "../../components/footer/Footer";
 
 const Login = () => {
   const navigate = useNavigate();
-  const db = getFirestore(); // Initialize Firestore
   const [error, setError] = useState("");
 
   const handleGoogleLogin = async () => {

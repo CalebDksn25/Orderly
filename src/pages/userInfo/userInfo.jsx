@@ -41,12 +41,16 @@ const UserInfo = () => {
     if (user) {
       // Save user data to Firestore
       const userDocRef = doc(db, "users", user.uid);
-      await setDoc(userDocRef, {
-        firstName,
-        lastName,
-        purpose,
-        email: user.email,
-      }, { merge: true }); // Merge ensures it won't overwrite existing data
+      await setDoc(
+        userDocRef,
+        {
+          firstName,
+          lastName,
+          purpose,
+          email: user.email,
+        },
+        { merge: true }
+      ); // Merge ensures it won't overwrite existing data
 
       console.log("User Data Saved:", { firstName, lastName, purpose });
 
