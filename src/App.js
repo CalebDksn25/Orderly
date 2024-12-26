@@ -7,7 +7,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import User from "./pages/user/User";
 import UserInfo from "./pages/userInfo/userInfo"; // Import the new UserInfo component
 import "./firebase/firebaseConfig"; // Ensure Firebase is initialized
-import Spreadsheet from "./pages/spreadsheeet/Spreadsheet";
+import Spreadsheet from "./pages/spreadsheet/Spreadsheet";
 
 function App() {
   return (

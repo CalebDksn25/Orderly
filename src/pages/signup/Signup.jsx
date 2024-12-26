@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { googleLogin } from "../../utils/googleLogin";
 import { createSpreadsheetForUser } from "../../utils/createSpreadsheetForUser"; // Import spreadsheet creation utility
 import { saveSpreadsheetId } from "../../utils/saveSpreadsheetId"; // Import Firestore save utility
-import Spreadsheet from "../spreadsheeet/Spreadsheet"; // Import Spreadsheet component
+import Spreadsheet from "../spreadsheet/Spreadsheet"; // Import Spreadsheet component
 import "./signup.css";
 
 const Signup = () => {

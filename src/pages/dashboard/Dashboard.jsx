@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Accounts from "../accounts/Accounts";
 import Stores from "../stores/Stores";
-import Spreadsheet from "../spreadsheeet/Spreadsheet"; // Ensure this path is correct
+import Spreadsheet from "../spreadsheet/Spreadsheet"; // Corrected path
 import "./dashboard.css";
 
 const Dashboard = () => {
