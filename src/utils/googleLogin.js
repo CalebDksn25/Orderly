@@ -1,22 +1,18 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase/firebaseConfig"; // Correct import
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 export const googleLogin = async () => {
-  const provider = new GoogleAuthProvider();
-
-  // Add scope to manage the user's Google Drive files
-  provider.addScope("https://www.googleapis.com/auth/drive.file");
-
   try {
-    // Sign in with Google and get the user details
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    const token = await user.getIdToken();
-    console.log("Google Account Linked:", user.email);
-    console.log("Token:", token); // Log the token for debugging
-    return { email: user.email, token }; // Returns the logged-in email and token
+
+    if (!result || !result.user) {
+      throw new Error("No user data received");
+    }
+
+    return result.user;
   } catch (error) {
-    console.error("Error with Google Login:", error.message);
+    console.error("Google login error:", error);
     throw error;
   }
 };

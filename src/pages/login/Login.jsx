@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { googleLogin } from "../../utils/googleLogin";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore"; // Firestore functions
@@ -8,11 +8,15 @@ import Footer from "../../components/footer/Footer";
 const Login = () => {
   const navigate = useNavigate();
   const db = getFirestore(); // Initialize Firestore
+  const [error, setError] = useState("");
 
   const handleGoogleLogin = async () => {
     try {
       const user = await googleLogin(); // Log in the user
-      alert("Login successful!");
+
+      if (!user || !user.uid) {
+        throw new Error("Invalid user data received");
+      }
 
       // Check Firestore directly here
       const userDocRef = doc(db, "users", user.uid);
@@ -31,8 +35,8 @@ const Login = () => {
         navigate("/user-info");
       }
     } catch (error) {
-      console.error("Login failed:", error.message);
-      alert("Login failed: " + error.message);
+      console.error("Login failed:", error);
+      setError(error.message || "Login failed. Please try again.");
     }
   };
 
@@ -40,6 +44,7 @@ const Login = () => {
     <div>
       <div className="form">
         <h2>Log In</h2>
+        {error && <div className="error-message">{error}</div>}
         <button onClick={handleGoogleLogin} className="google-login-button">
           Log In with Google
         </button>

@@ -148,3 +148,12 @@ body {
 .span a {
   color: var(--clr);
 }
+
+.error-message {
+  color: #ff0000;
+  background-color: #ffebee;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  text-align: center;
+}

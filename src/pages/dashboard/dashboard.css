@@ -1,7 +1,3 @@
-* {
-  color: #58bc82;
-}
-
 .dashboard-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
