@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Accounts from "../accounts/Accounts";
 import Stores from "../stores/Stores";
 import Spreadsheet from "../spreadsheet/Spreadsheet"; // Corrected path
+import { fetchEmails } from "../../utils/fetchEmails";
+import { filterEmails } from "../../utils/filterEmails";
 import "./dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({ receiptEmailCount }) => {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   const renderContent = () => {
@@ -80,6 +82,12 @@ const Dashboard = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            {/* Receipt Email Count Section */}
+            <div className="email-count">
+              <h3>Receipt Emails</h3>
+              <p>Total: {receiptEmailCount}</p>
             </div>
           </div>
         );

@@ -1,18 +1,21 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { gapi } from 'gapi-script';
 
 export const googleLogin = async () => {
-  try {
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
+  return new Promise((resolve, reject) => {
+    gapi.load('auth2', () => {
+      const auth2 = gapi.auth2.init({
+        client_id: 'http://785942090176-tp04jqcf6jpu3cqumeulnfqq3e3sn6rj.apps.googleusercontent.com',
+      });
 
-    if (!result || !result.user) {
-      throw new Error("No user data received");
-    }
-
-    return result.user;
-  } catch (error) {
-    console.error("Google login error:", error);
-    throw error;
-  }
+      auth2.signIn().then(
+        (user) => {
+          resolve(user.getBasicProfile());
+        },
+        (error) => {
+          console.error("Google login error:", error);
+          reject(error);
+        }
+      );
+    });
+  });
 };

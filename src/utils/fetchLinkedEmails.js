@@ -1,7 +1,6 @@
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-
-const db = getFirestore();
+import { db } from '../firebase/firebaseConfig'; // Ensure Firebase is initialized
 
 export const fetchLinkedEmails = async () => {
   try {
